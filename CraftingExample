@@ -1,0 +1,22 @@
+public void CraftIronAxe()
+    {
+        if(inventoryGO.GetComponent<Inventory>().currentIronIngots > 2.9 && inventoryGO.GetComponent<Inventory>().canCraft)
+        {
+            inventoryGO.GetComponent<Inventory>().currentIronIngots -= 3;
+            inventoryGO.GetComponent<Inventory>().currentIronAxes += 1;
+            ironAxesText.text = inventoryGO.GetComponent<Inventory>().currentIronAxes.ToString();
+	        ironingotsText.text = inventoryGO.GetComponent<Inventory>().currentIronIngots.ToString();
+            leatherText.text = inventoryGO.GetComponent<Inventory>().currentLeather.ToString();
+            levelSlider.GetComponent<LevelSystem>().currentXP += 100;
+            craftTimer.SetActive(true);
+            craftAnimator.Play("craftTime2");
+            inventoryGO.GetComponent<Inventory>().canCraft = false;
+            Invoke("ResetTimer", 1f);
+            slidertry.Play("slidertry");
+            slidertry.SetTrigger("slidertrigger");
+        }
+        else
+        {
+            Debug.Log("Hahaha");  
+		}
+    }
